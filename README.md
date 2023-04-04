@@ -22,3 +22,26 @@ const handleClick = () => {
   );
 };
 ```
+
+```typescript
+const [game, setGame] = useState({
+  id: 1,
+  player: {
+    name: "John",
+    gear: ["Gloves"],
+  },
+});
+
+const handleClick = () => {
+  setGame(
+    produce((draft) => {
+      draft.player.name = "Einar";
+    })
+  );
+  setGame(
+    produce((draft) => {
+      draft.player.gear.push("Boots");
+    })
+  );
+};
+```
