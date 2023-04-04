@@ -1,19 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import ProductList from "./components/ProductList";
+import axios from "axios";
+
+interface User {
+  id: number;
+  name: string;
+}
 
 function App() {
-  const ref = useRef<HTMLInputElement>(null);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    // Side effect
-    if (ref.current) ref.current.focus();
-  });
-
-  useEffect(() => {});
+    axios
+      .get<User[]>("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
+  }, []);
 
   return (
     <div>
-      <ProductList />{" "}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
