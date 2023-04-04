@@ -1,12 +1,19 @@
-import { useState } from "react";
-import Like from "./components/Like";
+import { useEffect, useRef, useState } from "react";
+import ProductList from "./components/ProductList";
 
 function App() {
-  const items = ["Sau", "Ku"];
-  const [alertVisible, setAlertVisibility] = useState(false);
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Side effect
+    if (ref.current) ref.current.focus();
+  });
+
+  useEffect(() => {});
+
   return (
     <div>
-      <Like onClick={() => console.log("clicked")} />
+      <ProductList />{" "}
     </div>
   );
 }
