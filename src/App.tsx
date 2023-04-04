@@ -1,23 +1,29 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
-import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
+import produce from "immer";
+
 function App() {
-  const items = ["Sau", "Ku"];
-  const [alertVisible, setAlertVisibility] = useState(false);
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "Bug 1", fixed: false },
+    { id: 2, title: "Bug 2", fixed: false },
+  ]);
+
+  const handleClick = () => {
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find((bug) => bug.id === 1);
+        if (bug) bug.fixed = true;
+      })
+    );
+  };
+
   return (
     <div>
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisibility(false)}>Hello World</Alert>
-      )}
-      <Button color="warning" onClick={() => setAlertVisibility(true)}>
-        Click meeee
-      </Button>
-      <ListGroup
-        items={items}
-        heading="Hello"
-        onSelectItem={() => console.log("Clikkd")}
-      ></ListGroup>
+      {bugs.map((bug) => (
+        <p key={bug.id}>
+          {bug.title} {bug.fixed ? "Fixed" : "New bug"}
+        </p>
+      ))}
+      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 }
