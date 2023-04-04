@@ -4,12 +4,34 @@ import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
 
 function App() {
-  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "John",
+      gear: ["Gloves"],
+    },
+  });
+
+  const handleClick = () => {
+    setGame(
+      produce((draft) => {
+        draft.player.name = "Einar";
+      })
+    );
+    setGame(
+      produce((draft) => {
+        draft.player.gear.push("Boots");
+      })
+    );
+  };
 
   return (
     <div>
-      <NavBar cartItemsCount={cartItems.length} />
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
+      {game.player.name}
+      {game.player.gear.map((item) => (
+        <p key={item}>{item}</p>
+      ))}
+      <button onClick={handleClick}>Click</button>
     </div>
   );
 }
