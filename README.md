@@ -2,8 +2,11 @@
 
 ### Boilerplate
 
+This project is created using `npm create vite@latest`
+
 1. Install nodejs 19 from nodejs.org
-2. Create app with 'npm create vite@latest'
+2. Run `npm i` to install modules from package.json
+3. Run `npm run dev` to start web-server
 
 #### immer "produce" is used to set nested states easily:
 
