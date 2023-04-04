@@ -8,6 +8,8 @@ This project is created using `npm create vite@latest`
 2. Run `npm i` to install modules from package.json
 3. Run `npm run dev` to start web-server
 
+### Nice to knows
+
 #### Immer "produce" is used to set nested states easily:
 
 ```typescript
