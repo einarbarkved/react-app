@@ -1,5 +1,7 @@
 # React Beginner
 
+![alt text](https://github.com/einarbarkved/react-app/blob/master/public/final.png?raw=true)
+
 ### Boilerplate
 
 This project is created using `npm create vite@latest`
