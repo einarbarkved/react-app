@@ -97,3 +97,11 @@ const Form = () => {
 
 export default Form;
 ```
+
+#### Use axios for managing API calls
+
+```typescript
+axios.delete("https://...");
+axios.post("https://...", newUser);
+axios.put("https://...", updatedUser);
+```
